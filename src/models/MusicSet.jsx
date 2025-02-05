@@ -16,7 +16,7 @@ import MusicScene from '../assets/3d/before_concert.glb';
 const MusicSet = (props) => {
   const musicRef = useRef();  
 
-  const { nodes, materials } = useGLTF('/before_concert.glb');
+  const { nodes, materials } = useGLTF(MusicScene);
   return (
     <a.group ref={musicRef} {...props} >
       <group scale={0.01}>
