@@ -13,7 +13,7 @@ import { a } from '@react-spring/three';
 
 import MusicScene from '../assets/3d/before_concert.glb';
 
-const MusicSet = ({ isRotating, setIsRotating, ...props }) => {
+const MusicSet = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const musicRef = useRef();  
 
   const { gl, viewport } = useThree();
