@@ -1,6 +1,6 @@
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import Loader from '../components/Loader'
+import { useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import Loader from '../components/Loader';
 
 import MusicSet from '../models/MusicSet';
 import Sky from '../models/Sky';
@@ -10,6 +10,8 @@ import Sky from '../models/Sky';
 </div> */}
 
 const Home = () => {
+  const [isRotating, setIsRotating] = useState(false);
+
   const adjustMusicSetForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [27, -10, -43];
@@ -28,7 +30,8 @@ const Home = () => {
   return (
     <section className="w-full h-screen relative">
       <Canvas 
-        className="w-full h-screen bg-transparent"
+        className={`w-full h-screen bg-transparent ${isRotating ? "cursor-grabbing" : "cursor-grab"}`}
+
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -42,6 +45,8 @@ const Home = () => {
             position={musicSetPosition}
             scale={musicSetScale}
             rotation={musicSetRotation}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
           />
         </Suspense>
       </Canvas>
